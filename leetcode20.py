@@ -15,3 +15,5 @@ class Solution:
 
 
 ##        检查是否有完整的括号 有 一个一个去掉 最后return true
+记住
+
