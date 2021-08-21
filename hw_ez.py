@@ -174,4 +174,170 @@ while True:
 """
 
 """
+检查坐标
+
+while True:
+    try:
+        m,n = map(int,input().split())
+        if m > 9 or n > 9:
+            print(-1)
+        else:
+            print(0)
+        x1,y1,x2,y2 = map(int,input().split())
+        if x1 >= m or x2 >= m or y1 >= n or y2 >= n:
+            print(-1)
+        else:
+            print(0)
+        x = int(input())
+        y = int(input())
+        if x >= m or x < 0 or m + 1 > 9:
+            print(-1)
+        else:
+            print(0)
+        if y >= n or y<0 or n + 1 > 9:
+            print(-1)
+        else:
+            print(0)
+        x,y = map(int,input().split())
+        if x >= m or y >= n:
+            print(-1)
+        else:
+            print(0)
+    except:
+        break
+"""
+"""
+
+尼科彻斯定理
+
+验证尼科彻斯定理，即：任何一个整数m的立方都可以写成m个连续奇数之和。
+while True:
+    try:
+        tar = int(input())
+        target = tar * tar * tar
+        #first state tar*tar -(tar-1)
+        a = tar*tar -(tar-1)
+        res = str(a)
+        for i in range (1, tar):
+            a = a + 2
+            res = res + '+'+ str(a)
+            
+        print (res)
+ 
+    except:
+        break
+"""
+
+
+"""
+最长公共字符串
+
+while True:
+    try:
+        a = input()
+        b = input()
+        len_com = 0
+        if len(a)>len(b):
+            a , b = b, a 
+        for i in range(len(a)):
+            if a[i-len_com:i+1]in b:
+                len_com += 1
+        print(len_com)
+    except:
+        break
+"""
+"""
+
+
+参数解析
+while True:
+    try:
+        s=input()
+        temp,res=[],[]
+        for i,x in enumerate(s):
+            if x=='"':
+                temp.append(i)
+        while temp:
+            if s[temp[0]:temp[1]].find(' ')!=-1:
+                a=s[temp[0]:temp[1]].replace(' ','++++')
+                s=s[:temp[0]]+a+s[temp[1]+1:]
+            temp.pop(0)
+            temp.pop(0)
+        res=s.split()
+        for j in range(len(res)):
+            res[j]=res[j].replace('++++',' ')
+            if res[j].find('"')!=-1:
+                res[j]=res[j].replace('"','')
+        print(len(res))
+        for k in res:
+            print(k)
+    except:
+        break
+"""
+
+"""
+一年中的第几天
+while True:
+    try:
+        year, month, day = map(int,input().split())
+        d = 0
+        check = [31,28,31,30,31,30,31,31,30,31,30,31]
+        d = sum(check[:month-1])
+        if  month > 2 and (year%4 == 0 and year%100 != 0 or year%400 == 0):
+            d = d +1
+        print(d+day)
+            
+    except:
+        break
+"""
+
+
+
+"""
+百钱买百鸡
+while True:
+    try:
+        a  = int(input())
+        for i in range (20):
+            for j in range (30):
+                for k in range (100):
+                    if 5 * i + 3 * j + k/3 == 100 and (i+j+k == 100):
+                        
+                        print(i,j,k)
+        
+        
+        
+    except:
+        break
+"""
+
+
+
+"""
+算二进制里有多少个1
+while True:
+    try:
+        a = bin(int(input())).count('1')
+       
+        print(a)
+        
+    except:
+        break
+
+
+
+"""
+
+"""
+四则运算
+while True:
+    try:
+        a = input()
+        a = a.replace("{", "(")
+        a = a.replace("}", ")")
+        a = a.replace("[", "(")
+        a = a.replace("]", ")")
+        print(int(eval(a))) 
+    except:
+        break
 """
