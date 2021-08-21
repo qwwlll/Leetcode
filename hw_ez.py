@@ -1,3 +1,4 @@
+"""
 while True:
     try:
         a = input()
@@ -6,7 +7,7 @@ while True:
     except:
         break
 
-
+"""
 #反转字符串
     #while True:
         #try:
@@ -83,4 +84,94 @@ while True:
         break
 """
 """
+dp 动态规划格子里的最短路经
+
+def uniquePath(m, n):
+
+    res=[[1]*n for i in range(m)]
+
+    for i in range (1, m):
+        for j in range (1,n):
+            res[i][j] = res[i-1][j]+ res[i][j-1]
+    return res[m-1][n-1]
+    
+while True:
+    try:
+        print(uniquePath(* map(lambda c:int(c)+1,input().split())))
+    except:
+        break
 """ 
+
+
+
+
+"""
+二进制里有多少个连续的1
+
+while True:
+    try:
+        a = input()
+        b = bin(int(a))[2:] #变成bin 去掉0b
+        c = str(b).split('0')#换到str 用0 分开
+        d = 0
+        for i in c:
+            d = max(d,len(i)) #挑选最大长度
+        print (d)
+    except:
+        break
+    
+"""
+"""
+import re
+十六进制 用数字分割字母
+while True:
+    try:
+        a = hex(int(input()))[2:]
+        b = str(a)
+        c = re.split('(\D+)', b)
+        print (c)
+
+    except:
+        break
+"""
+
+
+
+
+"""
+最长回文字符串
+def def_huiwen(pswd):
+    for i in range(len(pswd),0,-1):
+        for j in range (0,len(pswd)-i+1):
+            if pswd[j:j+i] == pswd[j:j+i][::-1]:
+                return i
+while True:
+    try:
+        a = input()
+        print(def_huiwen(a))
+    except:
+        break
+            
+"""
+"""
+
+
+统计字符串中的大写字母
+while True:
+    try:
+        a = input()
+        num_up = 0
+        for i in a:
+            if i.isupper():
+                num_up += 1
+            else:
+                pass
+        print(num_up)
+         
+    except:
+        break
+            
+"""
+
+"""
+"""
