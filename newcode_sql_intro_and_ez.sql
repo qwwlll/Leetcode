@@ -160,7 +160,7 @@ SELECT DISTINCT salary from salaries order by salary DESC
 
 
 """
-SQL4 查找所有已经分配部门的员工
+SQL04 查找所有已经分配部门的员工
 join
 
 
