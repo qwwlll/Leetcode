@@ -356,3 +356,17 @@ dept_emp de on e.emp_no = de.emp_no
 
 
 
+"""
+SQL07查找薪水记录超过15次的员工号emp_no以及其对应的记录次数t
+
+实际上group by 后面直接加having是可以的。重新复习了一下知识点：
+groupby子句常见错误
+1）SELECT 子句中只能存在以下三种 元素。
+●常数 ● 聚合函数 ● GROUP BY子句中指定的列名（也就是聚合键）
+2）where子句中不能使用聚合函数
+聚合函数可以再select,having,order by之后出现
+where指定分组之前数据行的条件，having子句用来指定分组之后条件
+
+SELECT emp_no, count(salary) as t from salaries group by emp_no having t > 15\
+
+"""
