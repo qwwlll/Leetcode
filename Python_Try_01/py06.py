@@ -5,7 +5,7 @@ def fib (n):
         a, b = b, a+b
     return a 
 
-print(fib(10))
+print(fib(1000))
 
 
 
@@ -16,4 +16,4 @@ def fib_res(n):
   
     return fib_res(n-1)+fib_res(n-2)
 
-print (fib_res(10))
+print (fib_res(1))
