@@ -121,3 +121,32 @@ class Solution:
             t = t.next.next
             
         return s
+
+## 两链表数相加
+
+def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+
+    dummy = curr = ListNode()
+    carry = 0
+    while l1 or l2:
+        if l1:
+            x = l1.val
+        else:
+            x = 0
+        if l2:
+            y = l2.val
+        else:
+            y = 0
+        all = x + y + carry
+        curr.next = ListNode(all % 10)
+        curr = curr.next
+        carry = all // 10
+        if l1:
+            l1 = l1.next
+        if l2:
+            l2 = l2.next
+    if carry:
+        curr.next = (ListNode(carry))
+    return dummy.next     
+
+##
