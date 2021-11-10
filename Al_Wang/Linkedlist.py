@@ -4,19 +4,17 @@ class ListNode:
          self.val = val
          self.next = next
 ## 翻转链表
-def reviseList(self, pHead):
-    if pHead == None:
-            return None
-    head = pHead
-    rev = None
-    nxt = None
-    while head :
-        nxt = head.next
-        head.next = rev
-        rev = head
-        head = nxt
-    return rev
 
+def reverse(self, head):
+    if not head or not head.next:
+        return head
+    pre = None
+    while head:
+        next = head.next  # 保存当前头节点的下一个节点
+        head.next = pre  # 将当前头节点的下一个节点指向 “上一个节点”，实现反转
+        pre = head  # 将当前头节点设置 “上一个节点”
+        head = next  # 将保存的下一个节点设置 “头节点”
+    return pre
 ## other way
 def revisedList(self, pHead):
     if pHead == None:
@@ -125,7 +123,6 @@ class Solution:
 ## 两链表数相加
 
 def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-
     dummy = curr = ListNode()
     carry = 0
     while l1 or l2:
@@ -149,4 +146,23 @@ def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         curr.next = (ListNode(carry))
     return dummy.next     
 
-##
+
+    ## 单链表排序
+class Solution:
+    def sortInList(self , head: ListNode) -> ListNode:
+        # write code here
+        temp = []   ### 造list 
+        temp.append(head.val)
+        while head.next:
+            head = head.next
+            temp.append(head.val) ## 将链表存入list // sort
+        temp.sort()
+        res = ListNode(-1)### 新建链表， 放入
+        tp = res
+        for i in temp:
+            t = ListNode(i)
+            tp.next = t
+            tp = tp.next
+        return res.next
+
+###
