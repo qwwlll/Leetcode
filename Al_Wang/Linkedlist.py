@@ -165,4 +165,45 @@ class Solution:
             tp = tp.next
         return res.next
 
-###
+### 判断回文
+class Solution:
+    def isPail(self, head) -> bool:
+        #链表为空，直接返回true
+        if head is None:
+            return True
+
+        #找到链表的中点
+        middle_point = self.middle_point(head)
+        second_start = self.reverse_list(middle_point.next)
+
+        #判断前半部分和后半部分是否相等
+        result = True
+        first = head
+        second = second_start
+        while result and second is not None:
+            if first.val != second.val:
+                result = False
+            first = first.next
+            second = second.next
+
+        #还原链表并返回结果
+        middle_point.next = self.reverse_list(second_start)
+        return result
+
+    #快慢指针寻找中点
+    def middle_point(self, head):
+        fast = head
+        slow = head
+        while fast.next is not None and fast.next.next is not None:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+
+    #翻转链表
+    def reverse_list(self, head):
+        previous = None
+        current = head
+        while current:
+            previous, previous.next, current = current, previous, current.next
+            
+        return previous

@@ -1,3 +1,4 @@
+from typing import List
 ###leetcode 15 sum of the three numbers
 ### sort 加双指针
 class Solution:
