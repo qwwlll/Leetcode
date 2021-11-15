@@ -4,17 +4,15 @@ from typing import List
 ## Space complexity:O(1) // 原地排序，所以空间复杂度就是1
 def bubble(a:List[int]):
     n = len(a)
-    if n <= 1:
+    if n <= 1: return a
+    for i in range (n):
+        swap = False
+        for j in range (n - i- 1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
+                swap = True
+    if not swap:
         return a 
-    for i in range(n):
-        swapped = False
-        for j in range (n - i - 1):
-            if a [j] > a [j + 1]:
-                a[j], a[j+1] = a[j+1], a[j] ## 前后比较然后交换
-                swapped = True
-        if not swapped:
-            break
-    return a
 print([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9])
 print(bubble([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9]))
 
@@ -25,12 +23,12 @@ print(bubble([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9]))
 def insertion(a: List[int]):
     n = len(a)
     if n <= 1: return a
-    for i in range(1, n):
+    for i in range (1, n):
         val = a[i]
-        j = i-1 
-        while j >= 0 and a[j] > val:
-            a[j + 1] = a[j]
-            j = j - 1 
+        j = i - 1
+        while a[j] > val and j >= 0:
+            a[j+1] = a[j]
+            j = j - 1
         a[j+1] = val
     return a
 print([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9])
@@ -45,11 +43,12 @@ def selection(a : List[int]):
     for i in range (n):
         min_index = i
         min_val = a[i]
-        for j in range(i,n):
+        for j in range (i,n):
             if a[j] < min_val:
                 min_index = j
                 min_val = a[j]
-        a[i], a[min_index] = a[min_index], a[i]
+        a[i], a[min_index]  = a[min_index], a[i]
+                
     return a
             
 
@@ -116,3 +115,27 @@ def parti(a: List[int], low: int, high: int):
     return j
 print([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9])
 print(mergeSort([2,3,4,31,3,1,4,2,5,6,721,3,4,2,7,9]))
+
+
+
+#####—————————————————————————————————— Non-comparsion based sort ——————————————————————————————————————
+### Linear Sort: 
+### Bucket Sort
+### Counting Sort
+### Radix Sort
+
+
+
+###leetcode 69 sqrt()
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x == 1:
+            return 1
+        min , max = 0, x
+        while max - min > 1:
+            mid = (max + min)//2
+            if mid * mid > x:
+                max = mid 
+            else:
+                min = mid
+        return min

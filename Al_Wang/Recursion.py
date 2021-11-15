@@ -32,3 +32,40 @@ class Solution:
         return b
 
 
+
+
+## leetcode 50 pow(x,n):
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1.0
+        def pox(x:float, n:int):
+            if n == 0:
+                return 1.0
+            ans = self.myPow(x, n//2)
+            if n % 2 == 0:
+
+                return ans * ans
+            else:
+                return ans * ans * x
+        if n > 0:
+            return pox(x,n)
+        else:
+            return 1.0/pox(x,-n)
+
+
+
+##leetcode 203 从链表删除对应的val
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        if not head:
+            return None
+        H = ListNode(-1)
+        H.next = head
+        cur = H
+        while cur.next:
+            if cur.next.val == val:
+                cur.next = cur.next.next
+            else:
+                cur = cur.next
+        return H.next
