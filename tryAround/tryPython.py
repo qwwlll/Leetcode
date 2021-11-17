@@ -12,7 +12,9 @@ print(full_kobe)
 ## 换行 /n 
 ## 删除空白
 lebron = "  LeBron James   "
-print(lebron.strip())
+print(lebron.strip()) ## 清除两端空格
+##lebron.lstrip() kill 左空格
+##lebron.rstrip() kill 右空格
 
 ##list
 names = ['Westbrook', 'AD','Lebron','Kuzma','DHoward']
