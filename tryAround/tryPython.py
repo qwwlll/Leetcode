@@ -1,3 +1,20 @@
+### string
+kobe = "kobe bean bryant"
+print(kobe.title()) #### 每项首字母大写
+
+#print(kobe.upper()) ##每项全部字母大写
+#print(kobe.lower()) ##全部小写
+first_kobe = "kobe"
+middle_kobe = "bean"
+last_kobe = "bryant"
+full_kobe = first_kobe+" "+middle_kobe +" "+last_kobe ## str 相加
+print(full_kobe)
+## 换行 /n 
+## 删除空白
+lebron = "  LeBron James   "
+print(lebron.strip())
+
+##list
 names = ['Westbrook', 'AD','Lebron','Kuzma','DHoward']
 #print(names)
 #for i in names:
