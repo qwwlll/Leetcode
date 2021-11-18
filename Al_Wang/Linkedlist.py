@@ -199,7 +199,7 @@ class Solution:
             slow = slow.next
         return slow
 
-    #翻转链表
+    #leetcode 206 翻转链表
     def reverse_list(self, head):
         previous = None
         current = head
@@ -207,3 +207,15 @@ class Solution:
             previous, previous.next, current = current, previous, current.next
             
         return previous
+### leetcode 203. 移除链表元素
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        lt = ListNode(0)
+        lt.next = head
+        cur = lt
+        while cur.next:
+            if cur.next.val == val:
+                cur.next = cur.next.next
+            else:
+                cur = cur.next
+        return lt.next

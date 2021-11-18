@@ -55,17 +55,3 @@ class Solution:
 
 
 
-##leetcode 203 从链表删除对应的val
-class Solution:
-    def removeElements(self, head: ListNode, val: int) -> ListNode:
-        if not head:
-            return None
-        H = ListNode(-1)
-        H.next = head
-        cur = H
-        while cur.next:
-            if cur.next.val == val:
-                cur.next = cur.next.next
-            else:
-                cur = cur.next
-        return H.next

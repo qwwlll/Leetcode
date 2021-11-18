@@ -47,3 +47,28 @@ sorted(names) ## change the list temp for showing but not forever
 print(names)
 names.reverse()## change the list forever
 print(names)
+
+
+
+
+#### -----------------------------------------condition line
+#### if-elif-else line
+logging_names = []
+logging_names.append("David")
+logging_names.append("Lisa")
+logging_names.append("lizz")
+logging_names.append("Jason")
+logging_names.append("Raymond")
+logging_names.append("Clay")
+logging_names.append("Admin")
+if logging_names:
+    for i in logging_names:
+        if i == "Admin":
+            print("Hello, " + i + ", would you like to see the status report?")
+        else:
+            print("Hello, Brove"+ str(logging_names.index(i)) + i + " , welcome to the devgru")
+else: 
+    print("Hi, nobody is here! find somebody!")
+
+
+##### ----------------------------------------dictionary type
