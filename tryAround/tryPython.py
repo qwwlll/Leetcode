@@ -1,3 +1,4 @@
+from typing import List
 # ### string
 # kobe = "kobe bean bryant"
 # print(kobe.title()) #### 每项首字母大写
@@ -148,26 +149,26 @@
 
 
 
-bulls_dic = {
-    "DD": 'PF',
-    'Lavein':'SF',
-    'Zo':'PG',
-    'Vuicnic':'PF',
-    'AndreD':'C'
-}
-phlly_dic = {
-    "Ben": 'PF',
-    'Harris':'SF',
-    'S.Curry':'PG',
-    'Danny':'PF',
-    'Embiid':'C'
-}
+# bulls_dic = {
+#     "DD": 'PF',
+#     'Lavein':'SF',
+#     'Zo':'PG',
+#     'Vuicnic':'PF',
+#     'AndreD':'C'
+# }
+# phlly_dic = {
+#     "Ben": 'PF',
+#     'Harris':'SF',
+#     'S.Curry':'PG',
+#     'Danny':'PF',
+#     'Embiid':'C'
+# }
 
 
 
-### dic 删除
-del phlly_dic['S.Curry']
-print(phlly_dic)
+# ### dic 删除
+# del phlly_dic['S.Curry']
+# print(phlly_dic)
 
 # ### 嵌套dic 创建list 中有dic
 # final_dic =[
@@ -191,8 +192,40 @@ print(phlly_dic)
 #     for po in pos:
 #         print(po)
 
-# # ######________________________________________________
+# # ######________________________________________________ Function
+def magicians(mags): #### 打印字典
+    for mag_f, mag_l in mags.items():
+        print("Hello, " + mag_f.title() +" "+ mag_l.title() + " welcome to the bar")
 
+def edit_mags(mag, mags): #### 编辑字典
+    for mag_f, mag_l in mag.items():
+        mags[mag_f] = mag_l
+    while "magic" in mags.keys():
+        del mags["magic"]
+            
+
+maglk = {
+    "magic":"Daron",
+    "bryant":"kobe",
+    "james":"harden"
+}
+mag = {
+    "Anthoy":"Davis"
+}
+print("the older dict is: ")
+magicians(maglk)
+edit_mags(mag,maglk)
+print("Now the new edited dict is :")    
+magicians(maglk)
      
+#### cars dict builder:
+def builder(cars, names, colors):
+    for i in range(len(names)):
+        cars[names[i]] = colors[i]
+    return print(cars)
 
+cars ={}
+names = ['Volvo',"BMW","Mercides","AMG","Audi","Lamborghini"]
+colors = ["gray","black","Sliver","Green","blue","yellow"]
 
+builder(cars, names,colors)
