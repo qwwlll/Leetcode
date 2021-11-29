@@ -55,6 +55,11 @@ class Solution:
             res[2].append(root.val) ## 后： 左右根
         dfs(root)
         return res
+
+### leecode 145 后序 
+### leetcode 144 前序
+### leetcode 94 中序
+
                 
 ### leetcode 104 二叉树的最大深度
 class Solution:
