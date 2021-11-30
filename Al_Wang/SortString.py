@@ -14,7 +14,8 @@ def sortingStr(n: List[str]) -> List[str]:
         return x.count('a')
 
 ###    result = sorted(dic.items(), key= lambda x: x[1],reverse= True)
-    res = sorted(n, key = counting,reverse= True)
+### 多条件sort
+    res = sorted(n, key = lambda i: (counting(i),len(i),i),reverse= True)
     return res
     
 
@@ -22,3 +23,4 @@ def sortingStr(n: List[str]) -> List[str]:
 
 n = ['asdas', 'asfw', 'efa', 'hfeafa', 'ddefaf','abc','ac','aacs','abbcs']
 print(sortingStr(n))
+### leetcode 4 + 451
