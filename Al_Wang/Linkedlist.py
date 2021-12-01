@@ -219,3 +219,21 @@ class Solution:
             else:
                 cur = cur.next
         return lt.next
+
+#### leetcode 160. 相交链表
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        if headA == None or headB == None:
+            return 
+        a = headA
+        b = headB
+        while a != b :
+            if a:
+                a = a.next
+            else:
+                a =headB
+            if b:
+                b = b.next
+            else:
+                b = headA
+        return a     

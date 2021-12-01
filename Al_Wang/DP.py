@@ -95,3 +95,23 @@ class Solution:
                 else:
                     dp[i][j] = matrix[i][j] + min(dp[i-1][j] , dp[i][j-1])
         return dp[-1][-1]
+
+#### example 4. 换零钱
+class Solution:
+    def minMoney(self , arr: List[int], aim: int) -> int:
+        # write code here
+        if not arr:
+            return -1
+        if min(arr) > aim and aim != 0:
+            return -1
+        if aim == 0:
+            return 0
+        dp = [aim+1]*(aim+1)
+        dp[0] =0
+        for i in range(1, aim + 1):
+            for j in arr:
+                if j <=i:
+                    dp[i] = min(dp[i], dp[i-j]+1 )
+        if dp[aim]> aim:
+            return -1
+        return dp[aim]

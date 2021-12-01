@@ -14,6 +14,7 @@ def Bruteforce(A: str, B: str) -> bool:
         for j in range(m):
             if A[i+j] == B[j]:
                 if j == m - 1:
+                    
                     return True
                 else:
                     continue
