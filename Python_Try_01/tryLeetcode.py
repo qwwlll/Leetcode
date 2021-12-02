@@ -133,3 +133,54 @@ class Solution:
             i -= 1
             j -= 1
         return res[::-1]        
+
+#### leetcode 121. 买卖股票的最佳时机
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        if n == 0:
+            return 0
+        dp = [0]*n
+        minP = prices[0]
+        for i in range(1,n):
+            minP = min(prices[i],minP)
+            dp[i] = max(dp[i-1], prices[i]- minP)
+        return dp[-1]
+
+### leetcode 122. 买卖股票的最佳时机 II (可多次操作)
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        if n == 0:
+            return 0
+        if n == 1:
+            return 0
+        if n > 1:
+            ### dp[i][0] 前i天手上不持股票最大收益
+            ### dp[i][1] 前i天手上持股票最大收益
+            dp = [[0]*n for _ in range(n)]
+            dp[0][0] = 0
+            dp[0][1] = -prices[0]
+            for i in range(1,n):
+                dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
+                dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])
+            return dp[n-1][0]
+
+
+####leetcode 64. 最小路径和
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        m, n  = len(grid), len(grid[0])
+        if m == 1 and n == 1:
+            return grid[0][0]
+        dp = [[0]*n for _ in range(m )]
+        dp[0][0] = grid[0][0]
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j != 0:
+                    dp[i][j] = dp[i][j-1]+ grid[i][j]
+                elif i!=0 and j == 0:
+                    dp[i][j] = dp[i-1][j] + grid[i][j]
+                else:
+                    dp[i][j] = min(dp[i][j-1] +grid[i][j],dp[i-1][j]+grid[i][j] )
+        return dp[-1][-1]

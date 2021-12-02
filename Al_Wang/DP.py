@@ -4,7 +4,7 @@ from typing import List,Tuple
 #### example 1. 0-1 pack:
 def packs(arr:List[int], capacity: int) -> int:
     n = len(arr)
-    dp = [[-1]*(capacity+1)]*n
+    dp = [[-1]*(capacity+1) for i in range(n)]
     #init
     dp[0][0] = 1
     if arr[0] <= capacity:
@@ -25,7 +25,7 @@ def packs(arr:List[int], capacity: int) -> int:
 
 def packs_with_values(arr:List[Tuple[int, int]],capacity: int) ->int:
     n = len(arr)
-    dp = [[-1]*(capacity+1)]*n
+    dp = [[-1]*(capacity+1) for i in range(n)]
     #init
     dp[0][0] = 1
     if arr[0][0] <= capacity:
@@ -56,12 +56,50 @@ capacity = 8
 print(packs_with_values(items_info, capacity))
 
 
+##### leetcode 118. 杨辉三角
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        if numRows == 0 :
+            return 
+        if numRows == 1:
+            return [[1]]
+        if numRows == 2:
+            return[[1],[1,1]]
+        dp = [[1]* (i + 1) for i in range(numRows)]
+        for i in range(numRows):
+            for j in range( len(dp[i])):
+                if  i == j or j == 0:
+                    dp[i][j] = 1
+                else:
+                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+        return dp
+
+
+#####  leetcode 119. 杨辉三角 II
+
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        if rowIndex == 0:
+            return [1]
+        if rowIndex == 1:
+            return [1,1]
+        if rowIndex == 2:
+            return [1,2,1]
+        dp =[[1] * (i+1) for i in range(rowIndex + 1)]
+        for i in range(rowIndex+1):
+            for j in range(len(dp[i])):
+                if i == j or j == 0:
+                    dp[i][j] = 1
+                else:
+                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+        return dp[-1]
+
 
 ### example 2. 杨辉三角最小路径
 def minRounte(nums: List[int]) -> int:
     n = len(nums)
     while n > 0 :
-        dp = [[0] * n] * n
+        dp = [[0] * n for _ in range (n)]
         #init
         dp[0][0] = nums[0][0]
         for i in range(1,n):
@@ -71,7 +109,7 @@ def minRounte(nums: List[int]) -> int:
                 elif j == i:
                     dp[i][j] = dp[i-1][j-1] + nums[i][j]
                 else:
-                    dp[i][j] = min((dp[i-1][j-1] + nums[i][j]),(dp[i-1][0] + nums[i][0]))
+                    dp[i][j] = min((dp[i-1][j-1] + nums[i][j]),(dp[i-1][j] + nums[i][j]))
         return min(dp[n-1])
 
 nums = [[3], [2, 6], [5, 4, 2], [6, 0, 3, 2]]
@@ -83,7 +121,7 @@ class Solution:
     def minPathSum(self , matrix: List[List[int]]) -> int:
         # write code here
         n,m = len(matrix),len(matrix[0])
-        dp = [[0]*m]*n
+        dp = [[0]*m for _ in range(n)]
         #init
         dp[0][0] = matrix[0][0]
         for i in range(n):
@@ -115,3 +153,52 @@ class Solution:
         if dp[aim]> aim:
             return -1
         return dp[aim]
+
+#### example 5. 最长上升子序列
+#### leetcode 121. 买卖股票的最佳时机
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        if n == 0:
+            return 0
+        dp = [0]*n
+        minP = prices[0]
+        for i in range(1,n):
+            minP = min(prices[i],minP)
+            dp[i] = max(dp[i-1], prices[i]- minP)
+        return dp[-1]
+
+### leetcode 122. 买卖股票的最佳时机 II (可多次操作)
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        if n == 0:
+            return 0
+        if n == 1:
+            return 0
+        if n > 1:
+            ### dp[i][0] 前i天手上不持股票最大收益
+            ### dp[i][1] 前i天手上持股票最大收益
+            dp = [[0]*n for _ in range(n)]
+            dp[0][0] = 0
+            dp[0][1] = -prices[0]
+            for i in range(1,n):
+                dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
+                dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])
+            return dp[n-1][0]
+
+#### example 6. 最长公共字符串
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        n = len(text1)
+        m = len(text2)
+        dp = [[0]*(m+1) for _ in range (n+1)]
+        for i in range(1,n+1):
+            for j in range(1,m+1):
+                if text1[i-1] == text2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]+1
+                else:
+                    dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+        return dp[-1][-1]
+
+#### 
