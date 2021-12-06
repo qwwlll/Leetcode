@@ -17,6 +17,54 @@ from typing import List
 # ##lebron.lstrip() kill 左空格
 # ##lebron.rstrip() kill 右空格
 
+# s='abcdef'         #原字符串
+# s1=list(s)         #将字符串转换为列表
+# print(s1)             
+# ['a', 'b', 'c', 'd', 'e', 'f'] #列表的每一个元素为一个字符
+# s1[4]='E'          #将列表中的第5个字符修改为E
+# s1[5]='F'          #将列表中的第5个字符修改为E
+# s1
+# ['a', 'b', 'c', 'd', 'E', 'F'] 
+# s=''.join(s1)        #用空串将列表中的所有字符重新连接为字符串 s
+# 'abcdEF'            #新字符串
+
+# # # # >>> s='Hello World' 
+# # # # >>> s=s[:6] + 'Bital'     #s前6个字符串+'Bital'
+# # # # >>> s
+# # # # 'Hello Bital'
+# # # # >>> s=s[:3] + s[8:]      #s前3个字符串+s第8位之后的字符串
+# # # # >>> s
+# # # # 'Heltal'
+# # # # >>> s='abcdef'
+# # # # >>> s=s.replace('a','A')    #用A替换a
+# # # # >>> s
+# # # # 'Abcdef'
+# # # # >>> s=s.replace('bcd','123')  #用123替换bcd 
+# # # # >>> s
+
+# # # # 'A123ef'
+# # # # >>> s='Hello World'
+# # # # >>> s2=' 2017'       #变量赋值
+# # # # >>> s=s+s2
+# # # # >>> s
+# # # # 'Hello World 2017'
+# # # # >>> s='Hello World'
+# # # # >>> s='Hello World 2017'  #重新赋值
+# # # # >>> s
+# # # # 'Hello World 2017'
+s = 'abc:cba'
+s1 = s.replace(':', '')
+print(s1)
+s = 'abbmmmcccbbb'
+s1 = s.strip('abc')
+print(s1)
+s3 = s.lstrip('abc')
+s4 = s.rstrip('abc')
+print(s3)
+print(s4)
+
+
+
 # ##list
 # names = ['Westbrook', 'AD','Lebron','Kuzma','DHoward']
 # #print(names)
@@ -164,7 +212,7 @@ from typing import List
 #     'Embiid':'C'
 # }
 
-
+#######   notes= collections.defaultdict(int) 用来聚类计数
 
 # ### dic 删除
 # del phlly_dic['S.Curry']
