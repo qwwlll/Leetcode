@@ -237,3 +237,25 @@ class Solution:
             else:
                 b = headA
         return a     
+
+
+## leetcode 328. 奇偶链表
+## 将 奇偶分出两个 后连接
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: ListNode) -> ListNode:
+        if not head: return head
+        odd, even = head, head.next
+        od, ev = odd, even
+        while ev  and ev.next:
+            od.next = od.next.next
+            ev.next = ev.next.next
+            ev = ev.next
+            od = od.next
+        od.next = even
+        return odd
+        
