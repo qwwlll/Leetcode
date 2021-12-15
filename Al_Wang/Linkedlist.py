@@ -259,3 +259,76 @@ class Solution:
         od.next = even
         return odd
         
+
+#### 链表排序
+class Solution:
+    def sortList(self, head: ListNode) -> ListNode:
+        def merge(head1, head2):
+            dummy = ListNode(0)
+            x = dummy
+            while head1 and head2:
+                if head1.val < head2.val:
+                    x.next = head1
+                    head1 = head1.next
+                else:
+                    x.next = head2
+                    head2 = head2.next
+                x = x.next
+            if head1:
+                x.next = head1
+            else:
+                x.next = head2
+            return dummy.next
+            
+        def merge_sort(head):
+            if head == None or head.next == None:
+                return head
+            slow = head
+            fast = head.next
+            while fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+            ### last half
+            head2 = slow.next
+            ### first half
+            slow.next = None
+            L = merge_sort(head)
+            R = merge_sort(head2)
+            return merge(L,R)
+        return merge_sort(head)
+
+
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        def lenth(head):
+            count = 0
+            while head:
+                count += 1
+                head = head.next
+            return count
+        len =lenth(head)
+        dummy = ListNode(0)  ### 添加哑节点
+        dummy.next = head
+        cur = dummy
+        for i in range( len -n ):
+            cur = cur.next
+        cur.next = cur.next.next
+        return dummy.next
+
+### leetcode 1669 合并链表
+class Solution:
+    def mergeInBetween(self, list1: ListNode, a: int, b: int, list2: ListNode) -> ListNode:
+        head1, count = list1, 0
+        head2 = list2
+        while count < a - 1:
+            head1 = head1.next
+            count += 1
+        cur2 = head1
+        while count < b + 1:
+            cur2 = cur2.next
+            count += 1
+        while head2.next != None:
+            head2 = head2.next
+        head1.next = list2
+        head2.next = cur2
+        return list1

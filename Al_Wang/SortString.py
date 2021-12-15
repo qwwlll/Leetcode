@@ -24,3 +24,38 @@ def sortingStr(n: List[str]) -> List[str]:
 n = ['asdas', 'asfw', 'efa', 'hfeafa', 'ddefaf','abc','ac','aacs','abbcs']
 print(sortingStr(n))
 ### leetcode 4 + 451
+
+
+
+
+
+### leetcode 179 最大数
+from typing import List
+import functools
+class Solution:
+    #先把nums中的所有数字转化为字符串，形成字符串数组 nums_str
+    #比较两个字符串x,y的拼接结果x+y和y+x哪个更大，从而确定x和y谁排在前面；将nums_str降序排序
+    #把整个数组排序的结果拼接成一个字符串，并且返回
+    def largestNumber(self, nums: List[int]) -> str:
+        nums_str=list(map(str,nums))
+        compare=lambda x,y: 1 if x+y<y+x else -1
+        nums_str.sort(key=functools.cmp_to_key(compare))
+        res=''.join(nums_str)
+        if res[0]=='0':
+            res='0'
+        return res
+        
+    def largestNumber(self, nums: List[int]) -> str:
+        lt = list(map( str, nums))
+        def cmp(x, y):
+            if x+y < y+x:
+                return 1
+            else:
+                return -1
+        lt.sort(key =  functools.cmp_to_key(cmp))
+        res = ""
+        for i in lt:
+            res+=i
+        if res[0] == "0":
+            return "0"
+        return res
