@@ -105,7 +105,7 @@ class Solution:
             return True
 
         return helper(root)
-##### 100 检验 树是否相等
+##### leetcode 100 检验 树是否相等
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         if not p and not q:
@@ -159,6 +159,7 @@ class Solution:
         a = max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
         return a
 
+
 ### leetcode 105 通过中序和前序建树
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
@@ -176,6 +177,7 @@ class Solution:
                 node.right = recurBu(right_l)
             return node
         return recurBu(inorder)
+
 ### other way to build hash map
 
 class Solution:
@@ -224,10 +226,6 @@ class Solution:
         index_map = {index:val  for val, index in enumerate(inorder)}
         return build(0, len(inorder)-1 )
         
-
-
-
-
 ### leetcode 107. 二叉树的层序遍历 II
 class Solution:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
@@ -301,7 +299,19 @@ class Solution:
         else:
             return False
 
-
+### leetcode 111 最小深度
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+        minD = 10 ** 5
+        if root.left:
+            minD = min(self.minDepth(root.left), minD)
+        if root.right:
+            minD = min(self.minDepth(root.right), minD)
+        return minD + 1
 
 #### leetcode 114 BST转链表
 class Solution:
@@ -322,3 +332,12 @@ class Solution:
             prev.right = curr
 
 
+### leetcode 226 翻转tree
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return 
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
+        root.left, root.right = right, left
+        return root
