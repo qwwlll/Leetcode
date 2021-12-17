@@ -176,6 +176,22 @@ class Solution:
                 node.right = recurBu(right_l)
             return node
         return recurBu(inorder)
+### other way to build hash map
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def build(in_num, out_num):
+            if in_num > out_num:
+                return None
+            x = preorder.pop(0)
+            idx = idx_map[x]
+            root = TreeNode(x)
+            root.left = build(in_num, idx-1)
+            root.right = build(idx + 1, out_num)
+            return root
+        idx_map = { val:index for index, val in enumerate(inorder)}
+        return build(0, len(inorder)-1)
+
 ### leetcode 106 通过后序和中序建树
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
@@ -193,6 +209,22 @@ class Solution:
                 node.left = build(left_l)
             return node
         return build(inorder)
+ ## other way build hash map:
+class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        def build(in_left, in_right):
+            if in_left > in_right:
+                return None
+            val = postorder.pop()
+            idx = index_map[val]
+            node = TreeNode(val)
+            node.right = build(idx+ 1, in_right)
+            node.left = build(in_left, idx-1)
+            return node
+        index_map = {index:val  for val, index in enumerate(inorder)}
+        return build(0, len(inorder)-1 )
+        
+
 
 
 
