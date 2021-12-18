@@ -341,3 +341,15 @@ class Solution:
         right = self.invertTree(root.right)
         root.left, root.right = right, left
         return root
+
+### leetcode 700 搜索BST
+class Solution:
+    def searchBST(self, root: TreeNode, val: int) -> TreeNode:
+        if not root:
+            return None
+        if root.val == val:
+            return root
+        elif root.val > val:
+            return self.searchBST(root.left, val)
+        else:
+            return self.searchBST(root.right, val)
