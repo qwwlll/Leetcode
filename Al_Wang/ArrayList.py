@@ -49,3 +49,41 @@ class Solution:
 
 ###leetcode 41 missing postive number
 ### hash table used.
+
+
+
+
+
+####leetcode 128 最长连续序列
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num = set(nums)
+        longup = 0
+        for n in num:
+            if n - 1 not in num:
+                current_num = n
+                current_steak = 1
+                while current_num + 1 in num:
+                    current_steak += 1
+                    current_num += 1
+                longup = max(longup, current_steak)
+        return longup
+
+        
+### leetcode 347 前k个高频数
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        dic  = {}
+        ks = []
+        for i in range(len(nums)):
+            if nums[i] in dic:
+                dic[nums[i]] += 1
+            else:
+                dic[nums[i]]  = 1
+        res = list(dic.items())
+        res.sort(key = lambda x: x[1], reverse = True)
+        for i in range(k):
+            ks.append(res[i][0])
+        
+
+        return ks

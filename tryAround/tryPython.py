@@ -213,6 +213,7 @@ print(s4)
 # }
 
 #######   notes= collections.defaultdict(int) 用来聚类计数
+#######   dic_map = collections.Counter(nums)
 
 # ### dic 删除
 # del phlly_dic['S.Curry']

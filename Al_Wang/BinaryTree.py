@@ -342,6 +342,19 @@ class Solution:
         root.left, root.right = right, left
         return root
 
+### leetcode 236 最近公共祖先
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root or root == p or root == q:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if not left:
+            return right
+        if not right:
+            return left
+        return root
+
 ### leetcode 700 搜索BST
 class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
@@ -353,3 +366,5 @@ class Solution:
             return self.searchBST(root.left, val)
         else:
             return self.searchBST(root.right, val)
+
+
