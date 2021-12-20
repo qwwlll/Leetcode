@@ -84,6 +84,36 @@ class Solution:
         res.sort(key = lambda x: x[1], reverse = True)
         for i in range(k):
             ks.append(res[i][0])
-        
-
         return ks
+
+
+#### leetcode 200. 岛屿数量
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        def dfs_checking( grid, r, c):
+            grid[r][c] = 0
+            gr, gn = len(grid), len(grid[0])
+            for x, y in [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]:
+                if  0 <= x < gr and 0 <= y < gn and grid[x][y] == "1":
+                    dfs_checking(grid, x, y)
+        
+        r, c = len(grid), len(grid[0])
+        if r == 0:
+            return 0
+        num_island = 0
+        for i in range(r):
+            for j in range(c):
+                if grid[i][j] == "1":
+                    num_island += 1
+                    dfs_checking(grid, i, j)
+        return num_island
+
+##### leetcode 162. 寻找峰值
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
+            return 0
+        return nums.index(max(nums))
+
