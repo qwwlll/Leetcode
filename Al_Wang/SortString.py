@@ -59,3 +59,19 @@ class Solution:
         if res[0] == "0":
             return "0"
         return res
+
+### leetcode 3 无重复字符的最长子串 (滑动窗口)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        k, dic, res = -1, {}, 0
+        for i, c in enumerate(s):
+            if c in dic and dic[c] > k:
+                k = dic[c]
+                dic[c] = i
+            else:
+                dic[c] = i
+                res = max(res, i - k)
+        return res
+
+### 
+
