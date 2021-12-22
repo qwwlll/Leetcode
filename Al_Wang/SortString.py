@@ -113,3 +113,28 @@ class Solution:
                     max_len = j - i + 1
                     begin = i
         return s[begin:begin + max_len]
+
+### 牛客 字符串排序
+def working(s: str):
+    xs = list(s)
+    n = len(xs)
+    res = []
+    for i in xs:
+        if i.isalpha():
+            res.append(i)
+    res.sort(key = str.upper)
+    j = 0
+    for i in range(n):
+        if xs[i].isalpha():
+            xs[i] = res[j]
+            j += 1
+    
+    return print("".join(xs))
+
+
+while 1:
+    try:
+        s = input()
+        working(s)
+    except:
+        break
