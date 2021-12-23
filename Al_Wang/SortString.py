@@ -249,3 +249,14 @@ while 1:
     except:
         break
 
+
+
+### 全排列：
+import itertools
+s = [1, 2, 3]
+list01 = list(itertools.combinations("abc", 2))
+list02 = list(itertools.permutations(s, 3))
+
+###显然，combinations方法重点在组合，permutations方法重在排列。
+
+###还有就是，combinations和permutations返回的是对象地址，原因是在python3里面，返回值已经不再是list,而是
