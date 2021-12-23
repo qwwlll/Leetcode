@@ -168,3 +168,84 @@ while True:
                 print("true",end=' ')
     except:
         break
+
+### hj 65 两字符串 最长公共子串
+while 1:
+    try:
+        res = " "
+        s1,s2 = input(), input()
+        if len(s1) > len(s2):
+            long, short = s1, s2
+        else:
+            long, short = s2, s1
+        for i in range(len(short)):
+            for j in range(len(short)):
+                if short[i:j + 1] in long and j + 1 - i > len(res):
+                    res = short[i:j + 1]
+        print(res)
+    except:
+        break
+
+### hj 23 删除字符串中出现次数少的字符
+while 1:
+    try:
+        s = input()
+        dic = {}
+        res = []
+        for i in range(len(s)):
+            if s[i] in dic:
+                dic[s[i]] += 1
+            else:
+                dic[s[i]] = 1
+        min_num = min(dic.values())
+        for key, val in dic.items():
+            if val == min_num:
+                res.append(key)
+        for re in res:
+            s = s.replace(re, "")
+        print(s)
+
+    except:
+        break
+
+
+### hj 102 字符串统计
+
+while 1:
+    try:
+        a = input()
+        s = set(a)
+        dic = {}
+        res = ""
+        for i in s:
+            if a.count(i) not in dic:
+                dic[a.count(i)] = []
+            dic[a.count(i)] += [i]
+        t = sorted(dic, reverse= True)
+        for i in t:
+            res += "".join(sorted(dic[i], key = ord))
+        print(res)
+    except:
+        break
+
+### hj96 表示数字
+while 1:
+    try:
+        a = input()
+        res = ""
+        i = 0
+        n = len(a)
+        while i < n:
+            if a[i].isdigit():
+                res += "*"
+                while i < n and a[i].isdigit():
+                    res +=a[i]
+                    i += 1
+                res += "*"
+            else:
+                res += a[i]
+                i += 1
+        print(res)
+    except:
+        break
+

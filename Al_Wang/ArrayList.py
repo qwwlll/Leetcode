@@ -156,3 +156,37 @@ while True:
     except:
         break
 
+
+### hj91 走方格方案
+
+while 1:
+    try:
+        def countGe(n , m):
+            dp = [[1]*m for _ in range(n)]
+            dp[0][0] = 1
+            for i in range(1, n):
+                for j in range(1,m):
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+            return dp[-1][-1]
+        
+        n, m = list(map(int, input().split()))
+        print(countGe(n + 1 , m + 1 ))
+        
+        
+    except:
+        break
+
+    
+### hj 85 最长回文字符串
+def def_huiwen(pswd):
+    for i in range(len(pswd),0,-1):
+        for j in range (0,len(pswd)-i+1):
+            if pswd[j:j+i] == pswd[j:j+i][::-1]:
+                return i
+while True:
+    try:
+        a = input()
+        print(def_huiwen(a))
+    except:
+        break
+            
