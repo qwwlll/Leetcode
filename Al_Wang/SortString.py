@@ -138,3 +138,33 @@ while 1:
         working(s)
     except:
         break
+
+
+### 华为 连续迟到早退
+while True:
+    try:
+        n = int(input())
+        absent_flag = False
+        late_flag = False
+        total_flag = False
+        for i in range(n):
+            recordlist = input().split()
+            absent_num = recordlist.count("absent")
+            if absent_num>=2:
+                absent_flag = True
+            else:
+                absent_flag = False
+            for i in range(len(recordlist)-1):
+                if (recordlist[i] == 'late' or recordlist[i] =="leaveearly") and (recordlist[i+1] == 'late' or recordlist[i+1] =="leaveearly"):
+                    late_flag = True
+                if i < len(recordlist)-7:
+                    rec_list = recordlist[i:i+7]
+                    total_num = rec_list.count("late")+rec_list.count("absent")+rec_list.count("leaveearly")
+                    if total_num >=4:
+                        total_flag = True
+            if absent_flag or late_flag or total_flag:
+                print("false",end=' ')
+            else:
+                print("true",end=' ')
+    except:
+        break

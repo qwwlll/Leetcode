@@ -117,3 +117,42 @@ class Solution:
             return 0
         return nums.index(max(nums))
 
+### 华为矩阵 每列最大和
+#输入
+#3 4
+#-3 3 -1 4
+#-4 4 -2 5
+# 5 5 -3 3
+#输出
+#18 
+
+while True:
+    try:
+
+        row,col = map(int,input().split())
+        if row == 0 or col == 0:
+            print(0)
+            break
+        L = []
+        for i in range(row):
+            LL = list(map(int,input().split()))
+            L.append(LL)
+        L_max_sum = 0
+        num_sum = 0
+        for  pos_row in range(row):
+            for pos_col in range(col):
+
+                row_yu = row - pos_row
+                col_yu = col - pos_col
+                for i_row_yu in range(row_yu):
+                    for i_col_yu in range(col_yu):
+                        num_sum = 0
+                        for row_num in range(i_row_yu+1):
+                            for col_num in range(i_col_yu+1):
+                                num_sum += L[pos_row+row_num][pos_col+col_num]
+                        if L_max_sum < num_sum:
+                            L_max_sum = num_sum
+        print(L_max_sum)
+    except:
+        break
+
