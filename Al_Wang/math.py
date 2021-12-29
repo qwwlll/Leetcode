@@ -42,5 +42,33 @@ class Solution: ## (会超时)
             res //= 10
         return count
 
+#### leetcode 29 两数相除c
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        sign = 1
+        ### 不同符号 
+        if dividend ^ divisor < 0 :
+            sign = -1
+            divisor = abs(divisor)
+            dividend = abs(dividend)
+        if divisor < 0 and dividend < 0 :
+            divisor = abs(divisor)
+            dividend = abs(dividend)
+        remain = dividend
+        result = 0
+        while remain >= divisor:
+            cur = 1
+            div = divisor
+            while div + div < remain:
+                cur += cur
+                div += div
+            remain -= div
+            result += cur
+        if sign == -1:
+            result = -result
+        
+        if result >= 2**31:  
+            result = 2**31-1
 
+        return result
         

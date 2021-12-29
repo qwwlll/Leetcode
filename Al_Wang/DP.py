@@ -253,6 +253,20 @@ def package():
         print(dp[-1])
     else:
         print(0)
-package()
+
+
+
+
+#### leetcode 139 单词拆分 （完全背包）
+class Solution:
+    def wordBreak( self, s: str, wordDict: List[str]) -> bool:
+        dp = [True] + [False]*len(s)
+        for i in range(len(s)):
+            for j in range(i+1, len(s) + 1):
+                if dp[i] and s[i:j] in wordDict:
+                    dp[j] = True
+        return dp[-1]
+
+#### 
 
 
