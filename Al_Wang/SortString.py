@@ -250,6 +250,28 @@ while 1:
         break
 
 
+### leetcode 131 分割回文串
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        n = len(s)
+        if not s:
+            return [[]]
+        if n == 1:
+            return [[s]]
+        res = []
+        for i in range(1, n + 1):
+            left = s[:i]
+            right = s[i:]
+            if left == left[::-1]:
+                right = self.partition(right)
+                for i in range (len(right)):
+                    res.append([left] + right[i])
+                    
+        return res
+
+
+
+
 
 ### 全排列：
 import itertools
