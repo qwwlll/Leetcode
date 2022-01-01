@@ -240,3 +240,44 @@ class Solution:
                 elif board[i][j] == "O":
                     board[i][j] = "X"
             
+
+
+#### leetcode 36 有效的数独
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+
+        # 将二维列表按行展开成一维列表
+        flatten_board = []
+        for i in range(9):
+            flatten_board.extend(board[i])
+
+        # 用于判断某一行/列/块是否合法（即是否有相同的元素）
+        def is_valid(m):
+            counter = {}
+            for el in m:
+                if el != '.':
+                    if el in counter:
+                        return False
+                    else:
+                        counter[el] = 1
+            return True
+
+        # 数独有9行/9列/9块
+        # 循环判断第 i 行/列/块 是否合法
+        for i in range(9):
+            # 数独第 i 行元素在展开后表列中的下标：[i * 9 + j for j in range(9)]
+            # 数独第 i 列元素在展开后列表中的下标：[i + j * 9 for j in range(9)]
+            # 数独第 i 块元素在展开后列表中的下标：[(i // 3) * 27 + (i % 3) * 3 + (j // 3) * 9 + (j % 3) for j in range(9)]
+            rowi = [flatten_board[i * 9 + j] for j in range(9)]  # 数独第 i 行元素
+            coli = [flatten_board[i + j * 9] for j in range(9)]  # 数独第 i 列元素
+            blocki = [flatten_board[(i // 3) * 27 + (i % 3) * 3 + (j // 3) * 9 + (j % 3)] for j in range(9)]  # 数独第 i 块元素
+
+            # 分别判断第 i 行/列/块是否合法，不合法，则数独不合法
+            if is_valid(rowi) is False:
+                return False
+            if is_valid(coli) is False:
+                return False
+            if is_valid(blocki) is False:
+                return False
+
+        return True

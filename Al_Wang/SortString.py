@@ -282,3 +282,28 @@ list02 = list(itertools.permutations(s, 3))
 ###显然，combinations方法重点在组合，permutations方法重在排列。
 #### combinations不在意顺序，而permutations有顺序
 ###还有就是，combinations和permutations返回的是对象地址，原因是在python3里面，返回值已经不再是list,而是
+
+
+
+#### leetcode 38 外观数列
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        
+        def count(s):
+            last = s[0]
+            count = 0
+            res = ''
+            for k in s:
+                if k == last:
+                    count += 1
+                else:
+                    res += str(count) + last
+                    count = 1
+                last = k
+            res += str(count) + last
+            return res
+
+        res = '1'
+        for _ in range(2,n+1):
+            res = count(res)
+        return res
