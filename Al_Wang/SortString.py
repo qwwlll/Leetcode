@@ -283,6 +283,15 @@ list02 = list(itertools.permutations(s, 3))
 #### combinations不在意顺序，而permutations有顺序
 ###还有就是，combinations和permutations返回的是对象地址，原因是在python3里面，返回值已经不再是list,而是
 
+#### leetcode 46. 全排列
+import itertools
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = itertools.permutations(nums,len(nums))
+        return list(res)
+### other way
+
+
 
 
 #### leetcode 38 外观数列
@@ -306,4 +315,4 @@ class Solution:
         res = '1'
         for _ in range(2,n+1):
             res = count(res)
-        return res
+        return resl
