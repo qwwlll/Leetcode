@@ -281,3 +281,34 @@ class Solution:
                 return False
 
         return True
+
+#### leetcode 27 移除元素
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        n = len(nums)
+        for i in range(n-1,-1,-1):
+            if nums[i] == val:
+                nums.pop(i)
+        return len(nums)
+
+
+#### leetcode 39 组合总和
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        tmp = []
+        ans = []
+        def dfs(index):
+            s = sum(tmp)
+            if s == target:
+                ans.append(tmp[:])
+                return
+            elif s > target:
+                return
+            for i in range(index, len(candidates)):
+                tmp.append(candidates[i])
+                dfs(i)
+                tmp.pop()
+
+        dfs(0)
+        return ans
+

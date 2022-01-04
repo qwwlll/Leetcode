@@ -71,4 +71,46 @@ class Solution:
             result = 2**31-1
 
         return result
+
+
+#### leetcode 09 回文数
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
+        elif str(x) == str(x)[::-1]:
+            return True
+        else:
+            return False
         
+
+#### leetcode 13 罗马数字转整数
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        romandic = {"I": 1, "V": 5, "X": 10, "L": 50, "C":100, "D":500, "M": 1000}
+        i , res = 0, 0 
+        while i < len(s) - 1:
+            if romandic[s[i]] < romandic[s[i + 1]]:
+                res -= romandic[s[i]]
+            else:
+                res += romandic[s[i]]
+            i += 1
+        return res + romandic[s[-1]]
+
+#### leetcode 12 整数转罗马数字
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        romadic = {"M": 1000, "CM": 900, "D": 500, "CD":400, "C": 100, "XC":90, "L":50, "XL": 40, "X": 10, "IX": 9, "V":5, "IV": 4, "I":1}
+        res = []
+        for re, val in romadic.items():
+            while num >= val:
+                num -= val
+                res.append(re)
+            if num == 0:
+                break
+        return "".join(res)
+

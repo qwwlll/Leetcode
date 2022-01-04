@@ -332,3 +332,15 @@ class Solution:
         head1.next = list2
         head2.next = cur2
         return list1
+
+#### leetcode 24. 两两交换链表中的节点
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        if not head or head.next == None:
+            return head
+        newHead = head.next
+        head.next = self.swapPairs(newHead.next)
+        newHead.next = head
+        return newHead
+
+        
