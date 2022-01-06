@@ -315,4 +315,4 @@ class Solution:
         res = '1'
         for _ in range(2,n+1):
             res = count(res)
-        return resl
+        return res
